@@ -1,4 +1,4 @@
-﻿namespace MY.Utils
+﻿namespace MY.Utils.Task
 {
     /// <summary>
     /// Specifies if the tween is by speed or by delay

@@ -1,11 +1,13 @@
-﻿using System.Threading;
+﻿#if MYLIB_UNITASK_SUPPORT
+
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace MY.Utils
+namespace MY.Utils.Task
 {
-	public static class GameObjectExtensions
-	{
+    public static class UniTaskGameObjectExtensions
+    {
 		/// <summary>
 		/// Activate or deactivate a GameObject after a specified delay
 		/// </summary>
@@ -20,3 +22,5 @@ namespace MY.Utils
 		}
 	}
 }
+
+#endif

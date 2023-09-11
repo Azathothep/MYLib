@@ -1,6 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
+﻿#if MYLIB_UNITASK_SUPPORT
 
-namespace MY.Utils
+using Cysharp.Threading.Tasks;
+
+namespace MY.Utils.Task
 {
     public static class MYUtils
     {
@@ -11,3 +13,5 @@ namespace MY.Utils
         }
     }
 }
+
+#endif

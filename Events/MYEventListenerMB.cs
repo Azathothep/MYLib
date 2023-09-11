@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
+
+using System.Collections;
 using UnityEngine;
 
 namespace MY.Events
@@ -24,3 +26,5 @@ namespace MY.Events
         }
     }
 }
+
+#endif

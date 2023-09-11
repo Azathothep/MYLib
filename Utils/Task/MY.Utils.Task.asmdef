@@ -1,0 +1,22 @@
+{
+    "name": "MY.Utils.Task",
+    "references": [
+        "MY.Utils",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.cysharp.unitask",
+            "expression": "",
+            "define": "MYLIB_UNITASK_SUPPORT"
+        }
+    ],
+    "noEngineReferences": false
+}

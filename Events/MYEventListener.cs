@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
+
 using UnityEngine;
 
 namespace MY.Events
@@ -13,3 +14,5 @@ namespace MY.Events
         public void Unregister(System.Action onEventRaised, MonoBehaviour mono) => EventRef.UnregisterListener(onEventRaised, mono);
     }
 }
+
+#endif

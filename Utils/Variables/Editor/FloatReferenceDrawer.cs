@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MY.Variables
+namespace MY.Utils
 {
     // Code taken from roboryantron from it's Unite 2017 talk
 

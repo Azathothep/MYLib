@@ -1,24 +1,13 @@
-﻿using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Threading;
+#if MYLIB_UNITASK_SUPPORT
+
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
-namespace MY.Utils
+namespace MY.Utils.Task
 {
-	public static class SpriteRendererExtensions
-	{
-		/// <summary>
-		/// Sets a <see cref="SpriteRenderer"/> alpha
-		/// </summary>
-		/// <param name="rdr"></param>
-		/// <param name="alpha"></param>
-		public static void SetAlpha(this SpriteRenderer rdr, float alpha)
-		{
-			Color c = rdr.color;
-			c.a = alpha;
-			rdr.color = c;
-		}
-
+    public static class UniTaskSpriteRendererExtensions
+    {
 		/// <summary>
 		/// Fade a <see cref="SpriteRenderer"/> at a certain speed
 		/// </summary>
@@ -33,20 +22,20 @@ namespace MY.Utils
 		{
 			float speed = timing;
 			if (options == MYTweenOptions.ByDelay)
-				speed = timing == 0 ?	int.MaxValue :
+				speed = timing == 0 ? int.MaxValue :
 										Mathf.Abs(rdr.color.a - targetAlpha) / timing;
 
 			await rdr._MYFadeBySpeed(targetAlpha, speed, token, onComplete);
 		}
 
 		private static async UniTask _MYFadeBySpeed(this SpriteRenderer rdr, float targetAlpha, float speed, CancellationToken token = default, System.Action onComplete = null)
-        {
+		{
 			float originalAlpha = rdr.color.a;
 			float accumulator = 0.0f;
 
 			float difference = targetAlpha - originalAlpha;
 			float differenceAbs = Mathf.Abs(difference);
-			
+
 			float sign = Mathf.Sign(difference);
 
 			while (accumulator < differenceAbs)
@@ -61,3 +50,5 @@ namespace MY.Utils
 		}
 	}
 }
+
+#endif

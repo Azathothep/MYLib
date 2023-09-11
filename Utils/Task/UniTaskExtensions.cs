@@ -1,11 +1,13 @@
-﻿using Cysharp.Threading.Tasks;
-using System.Collections;
-using UnityEngine;
+﻿#if MYLIB_UNITASK_SUPPORT
 
-namespace MY.Utils
+using Cysharp.Threading.Tasks;
+
+namespace MY.Utils.Task
 {
 	public static class UniTaskExtensions
 	{
 		public static void DoNotAwait(this UniTask task) { }
 	}
 }
+
+#endif

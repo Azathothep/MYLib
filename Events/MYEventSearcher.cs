@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
+
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using System.Reflection;
@@ -32,7 +34,7 @@ namespace MY.Events
                 {
                     if (((MYEventEmitter)f.GetValue(m)).EventRef == Event)
                     {
-                        Debug.Log("Found " + Event + " in object " + m);
+                        //Debug.Log("Found " + Event + " in object " + m);
                         emitters.Add(m);
                     }
                 }
@@ -40,3 +42,5 @@ namespace MY.Events
         }
     }
 }
+
+#endif

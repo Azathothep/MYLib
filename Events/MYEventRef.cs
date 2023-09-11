@@ -1,3 +1,5 @@
+#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
+
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
@@ -55,3 +57,5 @@ namespace MY.Events
         }
     }
 }
+
+#endif

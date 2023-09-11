@@ -1,55 +1,15 @@
-﻿using UnityEngine;
-using System.Threading.Tasks;
+﻿#if MYLIB_UNITASK_SUPPORT
+
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine;
 
-namespace MY.Utils
+namespace MY.Utils.Task
 {
-	public static class TransformExtensions
-	{
-		public static void MoveX(this Transform target, float x)
+    public static class UniTaskTransformExtensions
+    {
+		public static async UniTask SlowMoveX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
-			var pos = target.position;
-			pos.x = x;
-			target.position = pos;
-		}
-
-		public static void MoveY(this Transform target, float y)
-		{
-			var pos = target.position;
-			pos.y = y;
-			target.position = pos;
-		}
-
-		public static void MoveZ(this Transform target, float z)
-		{
-			var pos = target.position;
-			pos.z = z;
-			target.position = pos;
-		}
-
-		public static void LocalMoveX(this Transform target, float x)
-		{
-			var pos = target.localPosition;
-			pos.x = x;
-			target.position = pos;
-		}
-
-		public static void LocalMoveY(this Transform target, float y)
-		{
-			var pos = target.localPosition;
-			pos.y = y;
-			target.position = pos;
-		}
-
-		public static void LocalMoveZ(this Transform target, float z)
-		{
-			var pos = target.localPosition;
-			pos.z = z;
-			target.position = pos;
-		}
-
-		public static async UniTask SlowMoveX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null) {
 			float sign = Mathf.Sign(x - target.position.x);
 
 			while ((target.position.x - x) * sign < 0)
@@ -108,42 +68,6 @@ namespace MY.Utils
 			return target.SlowMoveZ(target.position.z + z, speed, token, onComplete);
 		}
 
-		public static void RotateZ(this Transform target, float degrees)
-		{
-			var rotation = target.rotation;
-			var eulerAngles = rotation.eulerAngles;
-			eulerAngles.z = degrees;
-			rotation.eulerAngles = eulerAngles;
-			target.rotation = rotation;
-		}
-
-		public static void RotateY(this Transform target, float degrees)
-		{
-			var rotation = target.rotation;
-			var eulerAngles = rotation.eulerAngles;
-			eulerAngles.y = degrees;
-			rotation.eulerAngles = eulerAngles;
-			target.rotation = rotation;
-		}
-
-		public static void LocalRotateZ(this Transform target, float degrees)
-		{
-			var rotation = target.localRotation;
-			var eulerAngles = rotation.eulerAngles;
-			eulerAngles.z = degrees;
-			rotation.eulerAngles = eulerAngles;
-			target.localRotation = rotation;
-		}
-
-		public static void LocalRotateY(this Transform target, float degrees)
-		{
-			var rotation = target.localRotation;
-			var eulerAngles = rotation.eulerAngles;
-			eulerAngles.y = degrees;
-			rotation.eulerAngles = eulerAngles;
-			target.localRotation = rotation;
-		}
-
 		/// <summary>
 		/// Rotates around Z axis over time, given a degree translation and a spectific speed
 		/// </summary>
@@ -167,3 +91,5 @@ namespace MY.Utils
 		}
 	}
 }
+
+#endif

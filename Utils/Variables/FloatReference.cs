@@ -1,4 +1,4 @@
-﻿namespace MY.Variables
+﻿namespace MY.Utils
 {
     [System.Serializable]
     public class FloatReference

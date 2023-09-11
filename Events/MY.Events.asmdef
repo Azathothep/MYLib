@@ -1,0 +1,23 @@
+{
+    "name": "MY.Events",
+    "rootNamespace": "",
+    "references": [
+        "NaughtyAttributes.Core",
+        "NaughtyAttributes.Editor"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.dbrizov.naughtyattributes",
+            "expression": "",
+            "define": "MYLIB_NAUGHTYATTRIBUTES_SUPPORT"
+        }
+    ],
+    "noEngineReferences": false
+}
