@@ -1,8 +1,5 @@
-#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
-
 using System.Collections.Generic;
 using UnityEngine;
-using NaughtyAttributes;
 
 namespace MY.Events
 {
@@ -13,22 +10,28 @@ namespace MY.Events
         private bool Log = false;
 
         [SerializeField]
-        [ReadOnly]
-        [ResizableTextArea]
+        private bool Mute = false;
+
+        [SerializeField]
         private string log;
+
+        [SerializeField]
+        private string devNotes;
+
+        [SerializeField]
+        private System.Action onLog;
 
         private List<System.Action> actions = new List<System.Action>();
 
-        [Button]
-        private void CleanLog()
-        {
-            log = string.Empty;
-        }
-
-        [Button]
         public void Raise(MonoBehaviour emitter = null)
         {
-            if (Log) log += "[" + emitter + "] raised event\n";
+            if (Mute) return;
+
+            if (Log)
+            {
+                string caller = emitter ? emitter.ToString() : "button";
+                log += "[" + caller + "] raised event\n";
+            }
 
             for (int i = actions.Count - 1; i >= 0; i--)
                 actions[i]();
@@ -41,7 +44,7 @@ namespace MY.Events
 
             actions.Add(action);
 
-            if (Log) log += ("[" + listener + "] registered\n");
+            if (Log) log += "[" + listener + "] registered\n";
         }
 
         public void UnregisterListener(System.Action action, MonoBehaviour listener)
@@ -55,7 +58,10 @@ namespace MY.Events
 
             if (Log) log += "[" + listener + "] unregistered\n";
         }
+
+        public void CleanLog()
+        {
+            log = string.Empty;
+        }
     }
 }
-
-#endif

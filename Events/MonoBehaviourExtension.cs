@@ -1,7 +1,3 @@
-#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MY.Events
@@ -13,5 +9,3 @@ namespace MY.Events
         public static void Raise(this MonoBehaviour mono, MYEventRef Event) => Event.Raise(mono);
     }
 }
-
-#endif

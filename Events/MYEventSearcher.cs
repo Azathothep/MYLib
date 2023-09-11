@@ -1,7 +1,4 @@
-﻿#if MYLIB_NAUGHTYATTRIBUTES_SUPPORT
-
-using System.Collections.Generic;
-using NaughtyAttributes;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
@@ -10,14 +7,14 @@ namespace MY.Events
 {
     public class MYEventSearcher : MonoBehaviour
     {
-        [ReadOnly]
+        //[ReadOnly]
         [SerializeField]
         private List<MonoBehaviour> emitters = new List<MonoBehaviour>();
 
         [SerializeField]
         private MYEventRef Event;
 
-        [Button]
+        //[Button]
         public void List()
         {
             emitters.Clear();
@@ -42,5 +39,3 @@ namespace MY.Events
         }
     }
 }
-
-#endif
