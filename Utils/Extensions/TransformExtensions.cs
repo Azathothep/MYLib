@@ -65,6 +65,14 @@ namespace MY.Utils
 			target.rotation = rotation;
 		}
 
+		public static void SetRotation(this Transform target, Vector3 angles)
+        {
+			var rotation = target.rotation;
+			var eulerAngles = angles;
+			rotation.eulerAngles = eulerAngles;
+			target.rotation = rotation;
+		}
+
 		public static void LocalRotateZ(this Transform target, float degrees)
 		{
 			var rotation = target.localRotation;
