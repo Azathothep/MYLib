@@ -3,6 +3,7 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using static Rewired.ComponentControls.Effects.RotateAroundAxis;
 
 namespace MY.Utils.Task
 {
@@ -41,12 +42,33 @@ namespace MY.Utils.Task
 			while (accumulator < differenceAbs)
 			{
 				accumulator += Time.deltaTime * speed;
-				rdr.SetAlpha(originalAlpha + accumulator * sign);
+				rdr.MYAlpha(originalAlpha + accumulator * sign);
 				await UniTask.Yield(cancellationToken: token);
 			}
 
-			rdr.SetAlpha(targetAlpha);
+			rdr.MYAlpha(targetAlpha);
 			onComplete?.Invoke();
+		}
+
+		public static async UniTask MYAlphaBlink(this SpriteRenderer rdr, float blinkAlpha, float speed, float duration)
+		{
+			float time = 0;
+			float originalAlpha = rdr.color.a;
+
+			while (time < duration)
+			{
+				rdr.MYAlpha(blinkAlpha);
+				await UniTask.WaitForSeconds(speed);
+
+				time += speed;
+
+				rdr.MYAlpha(originalAlpha);
+				await UniTask.WaitForSeconds(speed);
+
+				time += speed;
+			}
+
+			rdr.MYAlpha(originalAlpha);
 		}
 	}
 }

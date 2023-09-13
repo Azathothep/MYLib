@@ -4,50 +4,49 @@ namespace MY.Utils
 {
 	public static class TransformExtensions
 	{
-		public static void MoveX(this Transform target, float x)
+		public static void MYMoveX(this Transform target, float x)
 		{
 			var pos = target.position;
 			pos.x = x;
 			target.position = pos;
 		}
 
-		public static void MoveY(this Transform target, float y)
+		public static void MYMoveY(this Transform target, float y)
 		{
 			var pos = target.position;
 			pos.y = y;
 			target.position = pos;
 		}
 
-		public static void MoveZ(this Transform target, float z)
+		public static void MYMoveZ(this Transform target, float z)
 		{
 			var pos = target.position;
 			pos.z = z;
 			target.position = pos;
 		}
 
-		public static void LocalMoveX(this Transform target, float x)
+		public static void MYLocalMoveX(this Transform target, float x)
 		{
 			var pos = target.localPosition;
 			pos.x = x;
 			target.position = pos;
 		}
 
-		public static void LocalMoveY(this Transform target, float y)
+		public static void MYLocalMoveY(this Transform target, float y)
 		{
 			var pos = target.localPosition;
 			pos.y = y;
 			target.position = pos;
 		}
 
-		public static void LocalMoveZ(this Transform target, float z)
+		public static void MYLocalMoveZ(this Transform target, float z)
 		{
 			var pos = target.localPosition;
 			pos.z = z;
 			target.position = pos;
 		}
 
-
-		public static void RotateZ(this Transform target, float degrees)
+		public static void MYRotateZ(this Transform target, float degrees)
 		{
 			var rotation = target.rotation;
 			var eulerAngles = rotation.eulerAngles;
@@ -56,7 +55,7 @@ namespace MY.Utils
 			target.rotation = rotation;
 		}
 
-		public static void RotateY(this Transform target, float degrees)
+		public static void MYRotateY(this Transform target, float degrees)
 		{
 			var rotation = target.rotation;
 			var eulerAngles = rotation.eulerAngles;
@@ -65,7 +64,7 @@ namespace MY.Utils
 			target.rotation = rotation;
 		}
 
-		public static void SetRotation(this Transform target, Vector3 angles)
+		public static void MYSetRotation(this Transform target, Vector3 angles)
         {
 			var rotation = target.rotation;
 			var eulerAngles = angles;
@@ -73,7 +72,7 @@ namespace MY.Utils
 			target.rotation = rotation;
 		}
 
-		public static void LocalRotateZ(this Transform target, float degrees)
+		public static void MYLocalRotateZ(this Transform target, float degrees)
 		{
 			var rotation = target.localRotation;
 			var eulerAngles = rotation.eulerAngles;
@@ -82,7 +81,7 @@ namespace MY.Utils
 			target.localRotation = rotation;
 		}
 
-		public static void LocalRotateY(this Transform target, float degrees)
+		public static void MYLocalRotateY(this Transform target, float degrees)
 		{
 			var rotation = target.localRotation;
 			var eulerAngles = rotation.eulerAngles;

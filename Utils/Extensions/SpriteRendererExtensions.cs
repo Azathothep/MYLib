@@ -9,7 +9,7 @@ namespace MY.Utils
 		/// </summary>
 		/// <param name="rdr"></param>
 		/// <param name="alpha"></param>
-		public static void SetAlpha(this SpriteRenderer rdr, float alpha)
+		public static void MYAlpha(this SpriteRenderer rdr, float alpha)
 		{
 			Color c = rdr.color;
 			c.a = alpha;

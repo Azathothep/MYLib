@@ -8,70 +8,70 @@ namespace MY.Utils.Task
 {
     public static class UniTaskTransformExtensions
     {
-		public static async UniTask SlowMoveX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static async UniTask MYSlowMoveX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
 			float sign = Mathf.Sign(x - target.position.x);
 
 			while ((target.position.x - x) * sign < 0)
 			{
 				var newX = target.position.x + Time.deltaTime * sign * speed;
-				target.MoveX(newX);
+				target.MYMoveX(newX);
 				await UniTask.Yield(cancellationToken: token);
 			}
 
-			target.MoveX(x);
+			target.MYMoveX(x);
 			onComplete?.Invoke();
 		}
 
-		public static async UniTask SlowMoveY(this Transform target, float y, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static async UniTask MYSlowMoveY(this Transform target, float y, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
 			float sign = Mathf.Sign(y - target.position.y);
 
 			while ((target.position.y - y) * sign < 0)
 			{
 				var newY = target.position.y + Time.deltaTime * sign * speed;
-				target.MoveY(newY);
+				target.MYMoveY(newY);
 				await UniTask.Yield(cancellationToken: token);
 			}
 
-			target.MoveY(y);
+			target.MYMoveY(y);
 			onComplete?.Invoke();
 		}
 
-		public static async UniTask SlowMoveZ(this Transform target, float z, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static async UniTask MYSlowMoveZ(this Transform target, float z, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
 			float sign = Mathf.Sign(z - target.position.z);
 
 			while ((target.position.z - z) * sign < 0)
 			{
 				var newZ = target.position.z + Time.deltaTime * sign * speed;
-				target.MoveZ(newZ);
+				target.MYMoveZ(newZ);
 				await UniTask.Yield(cancellationToken: token);
 			}
 
-			target.MoveZ(z);
+			target.MYMoveZ(z);
 			onComplete?.Invoke();
 		}
 
-		public static UniTask SlowTranslateX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static UniTask MYSlowTranslateX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
-			return target.SlowMoveX(target.position.x + x, speed, token, onComplete);
+			return target.MYSlowMoveX(target.position.x + x, speed, token, onComplete);
 		}
 
-		public static UniTask SlowTranslateY(this Transform target, float y, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static UniTask MYSlowTranslateY(this Transform target, float y, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
-			return target.SlowMoveY(target.position.y + y, speed, token, onComplete);
+			return target.MYSlowMoveY(target.position.y + y, speed, token, onComplete);
 		}
 
-		public static UniTask SlowTranslateZ(this Transform target, float z, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static UniTask MYSlowTranslateZ(this Transform target, float z, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
-			return target.SlowMoveZ(target.position.z + z, speed, token, onComplete);
+			return target.MYSlowMoveZ(target.position.z + z, speed, token, onComplete);
 		}
 
 		/// <summary>
 		/// Rotates around Z axis over time, given a degree translation and a spectific speed
 		/// </summary>
-		public static async UniTask SlowRotateZ(this Transform target, float degrees, float speed, CancellationToken token = default, System.Action onComplete = null)
+		public static async UniTask MYSlowRotateZ(this Transform target, float degrees, float speed, CancellationToken token = default, System.Action onComplete = null)
 		{
 			float currentDifference = 0;
 			float differenceAmount = Mathf.Abs(degrees);
@@ -82,11 +82,11 @@ namespace MY.Utils.Task
 			{
 				currentDifference += Time.deltaTime * speed;
 				var newRot = originalRotation + currentDifference * sign;
-				target.RotateZ(newRot);
+				target.MYRotateZ(newRot);
 				await UniTask.Yield(cancellationToken: token);
 			}
 
-			target.RotateZ(originalRotation + degrees);
+			target.MYRotateZ(originalRotation + degrees);
 			onComplete?.Invoke();
 		}
 	}

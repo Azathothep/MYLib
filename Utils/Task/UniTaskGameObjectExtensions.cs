@@ -15,7 +15,7 @@ namespace MY.Utils.Task
 		/// <param name="active">activate or deactivate</param>
 		/// <param name="delay">delay in seconds</param>
 		/// <param name="token">the <see cref="CancellationToken"/></param>
-		public static async void SetActiveDelay(this GameObject go, bool active, float delay, CancellationToken token = default)
+		public static async void MYSetActiveAfterDelay(this GameObject go, bool active, float delay, CancellationToken token = default)
 		{
 			await UniTask.Delay((int)(delay * 1000), cancellationToken: token);
 			go.SetActive(active);

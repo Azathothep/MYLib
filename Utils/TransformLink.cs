@@ -47,7 +47,7 @@ namespace MY.Utils
                 this.transform.position = ApplyConstraints(this.transform.position, Linker.position + positionOffset, positionConstraints);
 
             if (linkRotation)
-                this.transform.SetRotation(ApplyConstraints(this.transform.rotation.eulerAngles, Linker.rotation.eulerAngles + rotationOffset, rotationConstraints));
+                this.transform.MYSetRotation(ApplyConstraints(this.transform.rotation.eulerAngles, Linker.rotation.eulerAngles + rotationOffset, rotationConstraints));
 
             if (linkScale)
                 this.transform.localScale = ApplyConstraints(this.transform.localScale, Linker.localScale + scaleOffset, scaleConstraints);
