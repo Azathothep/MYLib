@@ -34,11 +34,11 @@ namespace MY.Utils
 
         private void Awake()
         {
-            if (usePositionOffset) positionOffset = Linker.position - this.transform.position;
+            if (usePositionOffset) positionOffset = this.transform.position - Linker.position;
 
-            if (useRotationOffset) rotationOffset = Linker.rotation.eulerAngles - this.transform.rotation.eulerAngles;
+            if (useRotationOffset) rotationOffset = this.transform.rotation.eulerAngles - Linker.rotation.eulerAngles;
 
-            if (useScaleOffset) scaleOffset = Linker.localScale - this.transform.localScale;
+            if (useScaleOffset) scaleOffset =  this.transform.localScale - Linker.localScale;
         }
 
         private void Update()

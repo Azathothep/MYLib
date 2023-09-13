@@ -8,14 +8,14 @@ namespace MY.Utils
     {
         public override void OnInspectorGUI()
         {
-            SerializedProperty linkerProp = serializedObject.FindProperty("Linker");
+			EditorGUI.BeginChangeCheck();
+			SerializedProperty linkerProp = serializedObject.FindProperty("Linker");
             EditorGUILayout.PropertyField(linkerProp);
 
             SerializedProperty linkPosProp = serializedObject.FindProperty("linkPosition");
             SerializedProperty linkRotProp = serializedObject.FindProperty("linkRotation");
             SerializedProperty linkScaProp = serializedObject.FindProperty("linkScale");
 
-            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(linkPosProp);
             if (linkPosProp.boolValue)
             {
