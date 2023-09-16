@@ -1,5 +1,6 @@
 ﻿#if MYLIB_UNITASK_SUPPORT
 
+using System.Runtime.CompilerServices;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

@@ -1,0 +1,16 @@
+{
+    "name": "MY.Snapshots",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9ec9d72e32e5d284fbc31cbd15a6fe43"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -6,6 +6,12 @@ using UnityEngine;
 
 namespace MY.Utils.Task
 {
+	public enum RotateDirection
+	{
+		Clockwise,
+		Counterclockwise,
+	}
+
     public static class UniTaskTransformExtensions
     {
 		public static async UniTask MYSlowMoveX(this Transform target, float x, float speed, CancellationToken token = default, System.Action onComplete = null)
@@ -88,6 +94,28 @@ namespace MY.Utils.Task
 
 			target.MYRotateZ(originalRotation + degrees);
 			onComplete?.Invoke();
+		}
+
+		public static async UniTask MYSlowAbsoluteRotateZ(this Transform target, float degrees, float speed, RotateDirection dir = RotateDirection.Clockwise, CancellationToken token = default, System.Action onComplete = null)
+		{
+			float originalRotation = target.rotation.eulerAngles.z;
+			float differenceAmount = 0.0f;
+
+			if (dir == RotateDirection.Counterclockwise)
+			{
+				if (originalRotation <= degrees)
+					differenceAmount = degrees - originalRotation;
+				else
+					differenceAmount = 360 - originalRotation + degrees;
+			} else if (dir == RotateDirection.Clockwise)
+			{
+				if (originalRotation >= degrees)
+					differenceAmount = - originalRotation - degrees;
+				else
+					differenceAmount = - 360 - originalRotation + degrees;
+			}
+
+			await target.MYSlowRotateZ(differenceAmount, speed, token, onComplete);
 		}
 	}
 }

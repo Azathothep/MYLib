@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MY.Snapshots
 {
-
 	// Undo
 	// remove instanceIDs serialization
 	// Non only in editor ? :(
@@ -13,16 +12,13 @@ namespace MY.Snapshots
 	public class SnapshotContainerSO : ScriptableObject
 	{
 #if UNITY_EDITOR
-		[SerializeField]
-		[ReadOnlyInspector]
+		
 		private List<string> serializedComponents = new List<string>();
 
-		[SerializeField]
-		[ReadOnlyInspector]
+		
 		private List<int> instancesIDs = new List<int>();
 
-		[SerializeField]
-		[ReadOnlyInspector]
+		
 		private int componentSaved = 0;
 
 		private string ToJson(UnityEngine.Component component)

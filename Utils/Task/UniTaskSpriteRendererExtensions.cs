@@ -3,7 +3,6 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using static Rewired.ComponentControls.Effects.RotateAroundAxis;
 
 namespace MY.Utils.Task
 {
