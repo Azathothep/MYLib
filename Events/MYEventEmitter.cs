@@ -5,7 +5,7 @@ namespace MY.Events
     [System.Serializable]
     public class MYEventEmitter
     {
-        public MYEventRef EventRef;
-        public void Raise(MonoBehaviour caller) => EventRef.Raise(caller);
+        public MYEvent EventRef;
+        public void Raise(Object caller) => EventRef.Raise(caller);
     }
 }

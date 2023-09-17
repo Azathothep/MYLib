@@ -1,10 +1,11 @@
+using log4net.Config;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MY.Events
 {
     [CreateAssetMenu(fileName = "MYEvent", menuName = "MY/Events/Event")]
-    public class MYEventRef : ScriptableObject
+    public class MYEvent : ScriptableObject
     {
         [SerializeField]
         private bool Log = false;
@@ -12,7 +13,6 @@ namespace MY.Events
         [SerializeField]
         private bool Mute = false;
 
-        [SerializeField]
         private string log;
 
         [SerializeField]
@@ -23,9 +23,14 @@ namespace MY.Events
 
         private List<System.Action> actions = new List<System.Action>();
 
-        public void Raise(MonoBehaviour emitter = null)
+        [SerializeField]
+        private MYEventOption[] options;
+
+        public void Raise(Object emitter = null)
         {
             if (Mute) return;
+
+            if (RunOptions() == false) return;
 
             if (Log)
             {
@@ -35,6 +40,20 @@ namespace MY.Events
 
             for (int i = actions.Count - 1; i >= 0; i--)
                 actions[i]();
+        }
+
+        private bool RunOptions()
+        {
+            foreach (var option in options)
+            {
+                if (option.Evaluate(this) == false)
+                {
+                    log += "Event invalidated by option " + option;
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public void RegisterListener(System.Action action, MonoBehaviour listener)
@@ -62,6 +81,9 @@ namespace MY.Events
         public void CleanLog()
         {
             log = string.Empty;
+            Debug.Log("Log cleaned");
         }
+
+        public string GetLog() => log;
     }
 }

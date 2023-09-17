@@ -5,7 +5,7 @@ namespace MY.Events
     [System.Serializable]
     public class MYEventListener
     {
-        public MYEventRef EventRef;
+        public MYEvent EventRef;
 
         public void Register(System.Action onEventRaised, MonoBehaviour mono) => EventRef.RegisterListener(onEventRaised, mono);
 

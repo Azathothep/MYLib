@@ -8,7 +8,7 @@ namespace MY.Events
     public class MYEventFinder : MonoBehaviour
     {
         [SerializeField]
-        private MYEventRef Event;
+        private MYEvent Event;
 
         [SerializeField]
         private List<MonoBehaviour> emitters = new List<MonoBehaviour>();
