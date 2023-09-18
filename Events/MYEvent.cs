@@ -1,4 +1,3 @@
-using log4net.Config;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +22,8 @@ namespace MY.Events
 
         private List<System.Action> actions = new List<System.Action>();
 
+		private List<System.Action<Object>> actionsWithObjectArgument = new List<System.Action<Object>>();
+
         [SerializeField]
         private MYEventOption[] options;
 
@@ -40,6 +41,9 @@ namespace MY.Events
 
             for (int i = actions.Count - 1; i >= 0; i--)
                 actions[i]();
+
+			for (int i = actionsWithObjectArgument.Count - 1; i >= 0; i--)
+				actionsWithObjectArgument[i](emitter);
         }
 
         private bool RunOptions()
@@ -56,17 +60,27 @@ namespace MY.Events
             return true;
         }
 
-        public void RegisterListener(System.Action action, MonoBehaviour listener)
+        public void RegisterListener(System.Action action, Object listener)
         {
             if (actions.Contains(action))
                 return;
 
             actions.Add(action);
 
-            if (Log) log += "[" + listener + "] registered\n";
-        }
+            if (Log) RegisterLog(listener);
+		}
 
-        public void UnregisterListener(System.Action action, MonoBehaviour listener)
+		public void RegisterListener(System.Action<Object> action, Object listener)
+		{
+			if (actionsWithObjectArgument.Contains(action))
+				return;
+
+			actionsWithObjectArgument.Add(action);
+
+			if (Log) RegisterLog(listener);
+		}
+
+        public void UnregisterListener(System.Action action, Object listener)
         {
             int index = actions.IndexOf(action);
 
@@ -75,14 +89,27 @@ namespace MY.Events
 
             actions.RemoveAt(index);
 
-            if (Log) log += "[" + listener + "] unregistered\n";
-        }
+            if (Log) UnregisterLog(listener);
+		}
 
-        public void CleanLog()
-        {
-            log = string.Empty;
-            Debug.Log("Log cleaned");
-        }
+		public void UnregisterListener(System.Action<Object> action, Object listener)
+		{
+			int index = actionsWithObjectArgument.IndexOf(action);
+
+			if (index < 0)
+				return;
+
+			actionsWithObjectArgument.RemoveAt(index);
+
+			if (Log) UnregisterLog(listener);
+		}
+
+		// Log
+
+		private void RegisterLog(Object listener) => log += "[" + listener + "] registered\n";
+		private void UnregisterLog(Object listener) => log += "[" + listener + "] unregistered\n";
+
+		public void CleanLog() => log = string.Empty;
 
         public string GetLog() => log;
     }
