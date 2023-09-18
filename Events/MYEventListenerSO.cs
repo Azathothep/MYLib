@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace MY.Events
 {
 	public abstract class MYEventListenerSO : ScriptableObject
 	{
-		public MYEvent[] MYEvents;
+		[SerializeField]
+		public List<MYEvent> MYEvents;
 
 		public abstract void Load();
 		public abstract void Unload();
