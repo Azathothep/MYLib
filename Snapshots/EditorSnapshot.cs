@@ -6,7 +6,7 @@ namespace MY.Snapshots
 	{
 #if UNITY_EDITOR
 		[SerializeField]
-		private SnapshotContainerSO container;
+		private SnapshotContainer container;
 
 		[SerializeField]
 		private EditorSnapshot autoLoad;

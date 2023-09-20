@@ -61,6 +61,9 @@ namespace MY.Utils
                 EditorGUILayout.Space();
             }
 
+			if (GUILayout.Button("Update Transform"))
+				((TransformLink)target).UpdateTransform();
+
             if (EditorGUI.EndChangeCheck())
                 serializedObject.ApplyModifiedProperties();
         }

@@ -43,14 +43,7 @@ namespace MY.Utils
 
         private void Update()
         {
-            if (linkPosition)
-                this.transform.position = ApplyConstraints(this.transform.position, Linker.position + positionOffset, positionConstraints);
-
-            if (linkRotation)
-                this.transform.MYSetRotation(ApplyConstraints(this.transform.rotation.eulerAngles, Linker.rotation.eulerAngles + rotationOffset, rotationConstraints));
-
-            if (linkScale)
-                this.transform.localScale = ApplyConstraints(this.transform.localScale, Linker.localScale + scaleOffset, scaleConstraints);
+			UpdateTransform();
         }
 
         private Vector3 ApplyConstraints(Vector3 original, Vector3 target, Vector3Bool constraints)
@@ -60,5 +53,17 @@ namespace MY.Utils
                 constraints.y ? original.y : target.y,
                 constraints.z ? original.z : target.z);
         }
+
+		public void UpdateTransform()
+		{
+			if (linkPosition)
+				this.transform.position = ApplyConstraints(this.transform.position, Linker.position + positionOffset, positionConstraints);
+
+			if (linkRotation)
+				this.transform.MYSetRotation(ApplyConstraints(this.transform.rotation.eulerAngles, Linker.rotation.eulerAngles + rotationOffset, rotationConstraints));
+
+			if (linkScale)
+				this.transform.localScale = ApplyConstraints(this.transform.localScale, Linker.localScale + scaleOffset, scaleConstraints);
+		}
     }
 }
