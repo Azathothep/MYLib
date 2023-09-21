@@ -12,7 +12,7 @@ namespace MY.Events
         private bool isDelaying = false;
         private bool hasWaited = false;
 
-        public override bool Evaluate(MYEvent eventRef)
+		public override bool Evaluate(MYEvent eventRef)
         {
             if (hasWaited)
             {

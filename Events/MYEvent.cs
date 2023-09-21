@@ -24,14 +24,14 @@ namespace MY.Events
 
 		private List<System.Action<Object>> actionsWithObjectArgument = new List<System.Action<Object>>();
 
-        [SerializeField]
-        private MYEventOption[] options;
+		[SerializeField]
+		private MYEventOption[] options;
 
-        public void Raise(Object emitter = null)
+		public void Raise(Object emitter = null)
         {
             if (Mute) return;
 
-            if (RunOptions() == false) return;
+            //if (RunOptions() == false) return;
 
             if (Log)
             {
@@ -104,13 +104,11 @@ namespace MY.Events
 			if (Log) UnregisterLog(listener);
 		}
 
-		// Log
-
-		private void RegisterLog(Object listener) => log += "[" + listener + "] registered\n";
-		private void UnregisterLog(Object listener) => log += "[" + listener + "] unregistered\n";
+		// Logs
 
 		public void CleanLog() => log = string.Empty;
-
         public string GetLog() => log;
+		private void RegisterLog(Object listener) => log += "[" + listener + "] registered\n";
+		private void UnregisterLog(Object listener) => log += "[" + listener + "] unregistered\n";
     }
 }

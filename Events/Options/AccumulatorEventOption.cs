@@ -7,12 +7,12 @@ namespace MY.Events
     {
         [SerializeField]
         private int countNumber;
-        private int currentCount = 0;
+		private int currentCount = 0;
 
         [SerializeField]
         private MYEvent relayedEvent;
 
-        public override bool Evaluate(MYEvent eventRef)
+		public override bool Evaluate(MYEvent eventRef)
         {
             currentCount++;
 
