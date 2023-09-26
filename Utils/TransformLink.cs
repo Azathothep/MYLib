@@ -32,7 +32,7 @@ namespace MY.Utils
         private Vector3Bool scaleConstraints;
         private Vector3 scaleOffset;
 
-        private void Awake()
+        private void OnEnable()
         {
             if (usePositionOffset) positionOffset = this.transform.position - Linker.position;
 
