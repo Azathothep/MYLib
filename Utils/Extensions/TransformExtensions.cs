@@ -89,5 +89,12 @@ namespace MY.Utils
 			rotation.eulerAngles = eulerAngles;
 			target.localRotation = rotation;
 		}
+
+		public static void MYLocalScaleX(this Transform target, float scaleX)
+		{
+			var scale = target.localScale;
+			scale.x = scaleX;
+			target.localScale = scale;
+		}
 	}
 }
