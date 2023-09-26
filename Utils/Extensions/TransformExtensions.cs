@@ -29,21 +29,21 @@ namespace MY.Utils
 		{
 			var pos = target.localPosition;
 			pos.x = x;
-			target.position = pos;
+			target.localPosition = pos;
 		}
 
 		public static void MYLocalMoveY(this Transform target, float y)
 		{
 			var pos = target.localPosition;
 			pos.y = y;
-			target.position = pos;
+			target.localPosition = pos;
 		}
 
 		public static void MYLocalMoveZ(this Transform target, float z)
 		{
 			var pos = target.localPosition;
 			pos.z = z;
-			target.position = pos;
+			target.localPosition = pos;
 		}
 
 		public static void MYRotateZ(this Transform target, float degrees)
