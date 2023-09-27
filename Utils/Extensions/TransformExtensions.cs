@@ -64,6 +64,13 @@ namespace MY.Utils
 			target.rotation = rotation;
 		}
 
+		public static void MYRotate(this Transform target, Vector3 degrees)
+		{
+			var rotation = target.rotation;
+			rotation.eulerAngles = degrees;
+			target.rotation = rotation;
+		}
+
 		public static void MYSetRotation(this Transform target, Vector3 angles)
         {
 			var rotation = target.rotation;
