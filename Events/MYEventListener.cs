@@ -7,8 +7,8 @@ namespace MY.Events
     {
         public MYEvent EventRef;
 
-        public void Register(System.Action onEventRaised, MonoBehaviour mono) => EventRef.RegisterListener(onEventRaised, mono);
+        public void Register(System.Action onEventRaised, MonoBehaviour mono) => EventRef?.RegisterListener(onEventRaised, mono);
 
-        public void Unregister(System.Action onEventRaised, MonoBehaviour mono) => EventRef.UnregisterListener(onEventRaised, mono);
+        public void Unregister(System.Action onEventRaised, MonoBehaviour mono) => EventRef?.UnregisterListener(onEventRaised, mono);
     }
 }
