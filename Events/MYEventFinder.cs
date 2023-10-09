@@ -27,7 +27,7 @@ namespace MY.Events
 
 		private void FindMono()
 		{
-			var monos = FindObjectsOfType<MonoBehaviour>();
+			var monos = FindObjectsOfType<MonoBehaviour>(true);
 
 			foreach (var m in monos)
 			{
@@ -51,7 +51,7 @@ namespace MY.Events
 
 		private void FindSO()
 		{
-			var initializers = FindObjectsOfType<MYEventInitializer>();
+			var initializers = FindObjectsOfType<MYEventInitializer>(true);
 
 			foreach (var i in initializers)
 			{

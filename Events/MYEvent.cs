@@ -31,7 +31,7 @@ namespace MY.Events
         {
             if (Mute) return;
 
-            //if (RunOptions() == false) return;
+            if (RunOptions() == false) return;
 
             if (Log)
             {

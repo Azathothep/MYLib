@@ -6,6 +6,6 @@ namespace MY.Events
     public class MYEventEmitter
     {
         public MYEvent EventRef;
-        public void Raise(Object caller) => EventRef.Raise(caller);
+        public void Raise(Object caller) => EventRef?.Raise(caller);
     }
 }
