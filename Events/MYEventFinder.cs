@@ -33,20 +33,60 @@ namespace MY.Events
 			{
 				var eventFields = m.GetType()
 					.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
-					.Where(fi => (fi.FieldType == typeof(MYEventEmitter) || fi.FieldType == typeof(MYEventListener)));
+					.Where(fi => (fi.FieldType == typeof(MYEventEmitter)
+								|| fi.FieldType == typeof(MYEventEmitter[])
+								|| fi.FieldType == typeof(MYEventListener)
+								|| fi.FieldType == typeof(MYEventListener[])));
 
 				foreach (var f in eventFields)
 				{
-					if (f.FieldType == typeof(MYEventEmitter) && ((MYEventEmitter)f.GetValue(m)).EventRef == Event)
+					//if (f.FieldType == typeof(MYEventEmitter) && ((MYEventEmitter)f.GetValue(m)).EventRef == Event)
+					if (IsEmitting(f, m, Event))
 					{
 						emitters.Add(m);
 					}
-					else if (f.FieldType == typeof(MYEventListener) && ((MYEventListener)f.GetValue(m)).EventRef == Event)
+					//else if (f.FieldType == typeof(MYEventListener) && ((MYEventListener)f.GetValue(m)).EventRef == Event)
+					else if (IsListening(f, m, Event))
 					{
 						listeners.Add(m);
 					}
 				}
 			}
+		}
+
+		private bool IsEmitting(FieldInfo f, MonoBehaviour m, MYEvent Event)
+		{
+			if (f.FieldType == typeof(MYEventEmitter) && ((MYEventEmitter)f.GetValue(m)).EventRef == Event)
+				return true;
+
+			if (f.FieldType == typeof(MYEventEmitter[]))
+			{
+				for (int i = 0; i < ((MYEventEmitter[])f.GetValue(m)).Length; i++)
+				{
+					if (((MYEventEmitter[])f.GetValue(m))[i].EventRef == Event)
+						return true;
+				}
+			}
+
+			return false;
+		}
+
+		private bool IsListening(FieldInfo f, MonoBehaviour m, MYEvent Event)
+		{
+			if (f.FieldType == typeof(MYEventListener) && ((MYEventListener)f.GetValue(m)).EventRef == Event)
+				return true;
+
+			if (f.FieldType == typeof(MYEventListener[]))
+			{
+				for (int i = 0; i < ((MYEventListener[])f.GetValue(m)).Length; i++)
+				{
+					if (((MYEventListener[])f.GetValue(m))[i].EventRef == Event)
+						return true;
+				}
+			}
+
+
+			return false;
 		}
 
 		private void FindSO()
