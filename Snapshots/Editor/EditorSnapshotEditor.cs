@@ -61,13 +61,13 @@ namespace MY.Snapshots
 				if (GUILayout.Button("Save All"))
 					snapshot.SaveAll();
 
-			if (GUILayout.Button("Register IDs"))
-				snapshot.RegisterIDs();
-
 				if (GUILayout.Button("Load All"))
 					snapshot.LoadAll();
 
 			} EditorGUILayout.EndHorizontal();
+
+			if (GUILayout.Button("Register IDs"))
+				snapshot.RegisterIDs();
 
 			serializedObject.ApplyModifiedProperties();
 		}

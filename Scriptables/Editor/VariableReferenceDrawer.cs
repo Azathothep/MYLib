@@ -1,14 +1,14 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
-namespace MY.Utils
+namespace MY.Scriptables
 {
 	[CustomPropertyDrawer(typeof(VariableReference<>))]
 	public class VariableReferenceDrawer : PropertyDrawer
 	{
 		private readonly string[] popupOptions =
 		{
-			"Constant",
+			"Overwrite",
 			"Variable"
 		};
 
@@ -28,8 +28,8 @@ namespace MY.Utils
 			EditorGUI.BeginChangeCheck();
 
 			// Get properties
-			SerializedProperty useConstant = property.FindPropertyRelative("UseConstant");
-			SerializedProperty constantValue = property.FindPropertyRelative("ConstantValue");
+			SerializedProperty overwrite = property.FindPropertyRelative("Overwrite");
+			SerializedProperty overwritedValue = property.FindPropertyRelative("OverwritedValue");
 			SerializedProperty variable = property.FindPropertyRelative("Variable");
 
 			// Calculate rect for configuration button
@@ -42,12 +42,12 @@ namespace MY.Utils
 			int indent = EditorGUI.indentLevel;
 			EditorGUI.indentLevel = 0;
 
-			int result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, popupOptions, popupStyle);
+			int result = EditorGUI.Popup(buttonRect, overwrite.boolValue ? 0 : 1, popupOptions, popupStyle);
 
-			useConstant.boolValue = result == 0;
+			overwrite.boolValue = result == 0;
 
 			EditorGUI.PropertyField(position,
-				useConstant.boolValue ? constantValue : variable,
+				overwrite.boolValue ? overwritedValue : variable,
 				GUIContent.none);
 
 			if (EditorGUI.EndChangeCheck())

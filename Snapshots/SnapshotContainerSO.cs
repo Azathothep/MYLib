@@ -8,16 +8,17 @@ namespace MY.Snapshots
 	// remove instanceIDs serialization
 	// Non only in editor ? :(
 
-	[CreateAssetMenu(fileName = "SnapshotContainer", menuName = "MY/Snapshot/Container", order = 0)]
-	public class SnapshotContainer : ScriptableObject
+	[CreateAssetMenu(fileName = "SnapshotContainer", menuName = "MY/Snapshot/SnapshotContainer", order = 0)]
+	public class SnapshotContainerSO : ScriptableObject
 	{
 #if UNITY_EDITOR
-
-		[SerializeField]
+		
 		private List<string> serializedComponents = new List<string>();
 
+		
 		private List<int> instancesIDs = new List<int>();
 
+		
 		private int componentSaved = 0;
 
 		private string ToJson(UnityEngine.Component component)

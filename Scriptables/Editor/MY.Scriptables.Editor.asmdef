@@ -1,8 +1,8 @@
 {
-    "name": "MY.Snapshots",
+    "name": "MY.Scriptables.Editor",
     "rootNamespace": "",
     "references": [
-        ""
+        "GUID:b054c34b89164fd4690c69bfc2c51f61"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
