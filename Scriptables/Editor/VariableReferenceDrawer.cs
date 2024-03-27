@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MY.Scriptables
+namespace MY.Scriptables.Editor
 {
 	[CustomPropertyDrawer(typeof(VariableReference<>))]
 	public class VariableReferenceDrawer : PropertyDrawer
