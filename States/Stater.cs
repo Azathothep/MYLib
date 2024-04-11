@@ -7,7 +7,7 @@ namespace MY.States
 	public class Stater<StateID> where StateID : struct, IConvertible
 	{
 		private string m_DebugName;
-		private static bool EnableDebugLog;
+		public static bool EnableDebugLog;
 
 		private StaterState<StateID> m_CurState;
 
